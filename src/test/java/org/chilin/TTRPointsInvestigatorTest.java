@@ -1,6 +1,5 @@
 package org.chilin;
 
-import org.chilin.service.TTRService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,12 +18,12 @@ public class TTRPointsInvestigatorTest {
     @Test
     void getCurrentTtrPoints() {
         webTestClient.get()
-                .uri("/getttr")
+                .uri("/notifymeifdifferent")
                 .header(ACCEPT, APPLICATION_JSON_VALUE)
                 .exchange()
                 .expectStatus()
                 .isEqualTo(OK)
                 .expectBody(String.class)
-                .isEqualTo("1603");
+                .isEqualTo("Different");
     }
 }

@@ -1,7 +1,7 @@
 package org.chilin.model;
 
 import lombok.Data;
-import org.chilin.service.MyTischTennisCookieReader;
+import org.chilin.service.mytischtennis.MyTischTennisCookieReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyTischTennisSession {
 
-    private String myTtrPoints;
+    private Integer myTtrPoints;
 
     @Autowired
     private MyTischTennisCookieReader myTischTennisCookieReader;
