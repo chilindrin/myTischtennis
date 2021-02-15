@@ -4,11 +4,6 @@ spring:
       on-profile: test
 name: test-YAML
 environment: testing
-enabled: false
-servers:
-  - www.abc.test.com
-  - www.xyz.test.com
-
 ---
 spring:
   config:
@@ -16,3 +11,5 @@ spring:
       on-profile: prod
 name: prod-YAML
 environment: production
+user: wZ92DKv1mUlqRqWi2lYgGgeXYAhdOciUtx69Pdu10Aw=
+contra: AVO1DfKzz4HR99XciLi4CDzy6nCIab53UqDGJoeGlYY=

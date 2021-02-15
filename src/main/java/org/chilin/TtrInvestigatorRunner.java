@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TtrInvestigatorRunner implements CommandLineRunner {
+public class TtrInvestigatorRunner {
 
     @Autowired
     private MyTTConfig myTTConfig;
@@ -16,11 +16,4 @@ public class TtrInvestigatorRunner implements CommandLineRunner {
         SpringApplication.run(TtrInvestigatorRunner.class);
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        System.out.println("using environment: " + myTTConfig.getEnvironment());
-        System.out.println("name: " + myTTConfig.getName());
-        System.out.println("enabled:" + myTTConfig.isEnabled());
-        System.out.println("servers: " + myTTConfig.getServers());
-    }
 }
