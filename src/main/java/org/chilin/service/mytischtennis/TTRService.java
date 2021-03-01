@@ -1,9 +1,7 @@
 package org.chilin.service.mytischtennis;
 
-import org.chilin.config.MyTTConfig;
 import org.chilin.model.MyTischTennisSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -23,9 +21,6 @@ public class TTRService {
 
     @Autowired
     private TTRExtractor ttrExtractor;
-
-    @Autowired
-    private MyTTConfig myTTConfig;
 
     @Autowired
     private InfoDecryptor infoDecryptor;
@@ -69,8 +64,8 @@ public class TTRService {
     }
 
     private void logInAndGetCookies() {
-        String user = infoDecryptor.decryptString(myTTConfig.getUser());
-        String contra = infoDecryptor.decryptString(myTTConfig.getContra());
+        String user = "anguerrero@gmail.com";
+        String contra = infoDecryptor.getProperty();
 
         myTischtennisClient.post()
                 .uri(MYTISCHTENNIS_LOGIN)
