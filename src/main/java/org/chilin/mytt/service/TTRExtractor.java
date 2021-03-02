@@ -1,4 +1,4 @@
-package org.chilin.service.mytischtennis;
+package org.chilin.mytt.service;
 
 import org.springframework.stereotype.Service;
 

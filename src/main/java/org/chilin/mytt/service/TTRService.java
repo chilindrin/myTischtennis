@@ -1,6 +1,6 @@
-package org.chilin.service.mytischtennis;
+package org.chilin.mytt.service;
 
-import org.chilin.model.MyTischTennisSession;
+import org.chilin.mytt.model.MyTischTennisSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;

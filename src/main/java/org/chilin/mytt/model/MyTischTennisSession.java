@@ -1,7 +1,7 @@
-package org.chilin.model;
+package org.chilin.mytt.model;
 
 import lombok.Data;
-import org.chilin.service.mytischtennis.MyTischTennisCookieReader;
+import org.chilin.mytt.service.MyTischTennisCookieReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
