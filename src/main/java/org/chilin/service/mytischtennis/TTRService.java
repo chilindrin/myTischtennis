@@ -2,6 +2,7 @@ package org.chilin.service.mytischtennis;
 
 import org.chilin.model.MyTischTennisSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -22,8 +23,11 @@ public class TTRService {
     @Autowired
     private TTRExtractor ttrExtractor;
 
-    @Autowired
-    private InfoDecryptor infoDecryptor;
+    @Value("${encrypted.myttp}")
+    private String myTTdecryptedPassword;
+
+    @Value("${encrypted.myttu}")
+    private String myTTdecryptedUser;
 
     private WebClient myTischtennisClient;
     private String baseUrl = "https://www.mytischtennis.de";
@@ -64,13 +68,10 @@ public class TTRService {
     }
 
     private void logInAndGetCookies() {
-        String user = "anguerrero@gmail.com";
-        String contra = infoDecryptor.getProperty();
-
         myTischtennisClient.post()
                 .uri(MYTISCHTENNIS_LOGIN)
-                .body(BodyInserters.fromFormData("userNameB", user)
-                        .with("userPassWordB", contra )
+                .body(BodyInserters.fromFormData("userNameB", myTTdecryptedUser)
+                        .with("userPassWordB", myTTdecryptedPassword )
                         .with("targetPage", "https://www.mytischtennis.de/public/home?fromlogin=1&logout=true"))
                 .exchange()
                 .doOnSuccess(clientResponse -> this.myTischTennisSession.getMyTischTennisCookieReader()
