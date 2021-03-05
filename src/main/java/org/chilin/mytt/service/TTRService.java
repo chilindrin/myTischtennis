@@ -40,13 +40,12 @@ public class TTRService {
         if (isLogInSuccessfull()){
             String allMyTischtennisValuesTogether = this.myTischTennisSession.getMyTischTennisCookieReader()
                     .getAllMyTischtennisValuesTogether();
-            String pageWithTTRPoints = getPageWithTTRPoints(myTischtennisClient,allMyTischtennisValuesTogether);
-            String ttrPoints = ttrExtractor.extractTTRPoints(pageWithTTRPoints);
-            this.myTischTennisSession.setMyTtrPoints(Integer.parseInt(ttrPoints));
+            String pageWithTTInfo = getPageWithTTInfo(myTischtennisClient,allMyTischtennisValuesTogether);
+            this.myTischTennisSession.setTtrEntry(ttrExtractor.createTTREntry(pageWithTTInfo));
             logOutFromMyTischtennis();
         }
 
-        return this.myTischTennisSession.getMyTtrPoints();
+        return this.myTischTennisSession.getTtrEntry().getTtr();
     }
 
     private void logOutFromMyTischtennis(){
@@ -54,7 +53,7 @@ public class TTRService {
         logoutRequest.exchange().block().bodyToMono(String.class).block();
     }
 
-    private String getPageWithTTRPoints(WebClient myTischtennisClient,String cookieTogether){
+    private String getPageWithTTInfo(WebClient myTischtennisClient, String cookieTogether){
         WebClient.RequestBodySpec ttrRequest = myTischtennisClient
                 .method(HttpMethod.GET)
                 .uri(GIVEME_TTR_POINTS)

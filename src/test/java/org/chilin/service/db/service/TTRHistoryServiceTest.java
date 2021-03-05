@@ -1,5 +1,6 @@
 package org.chilin.service.db.service;
 
+import org.chilin.db.service.TTRHistoryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
