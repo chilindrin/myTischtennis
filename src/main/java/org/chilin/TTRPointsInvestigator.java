@@ -1,6 +1,6 @@
 package org.chilin;
 
-import org.chilin.db.TTRDBReader;
+import org.chilin.db.TTRHistoryKeeper;
 import org.chilin.mytt.service.TTRService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class TTRPointsInvestigator {
 
     @Autowired
-    private TTRService ttrService;
+    private TTRService myTischtennisService;
 
     @Autowired
-    private TTRDBReader ttrdbReader;
+    private TTRHistoryKeeper ttrHistoryDBService;
 
     @RequestMapping("/notifymeifdifferent")
     public String notifyTTRDifference(){
-        Integer ttrPoints = ttrService.getTtrPoints();
+        Integer ttrPoints = myTischtennisService.getTtrPoints();
 
-        Integer ttrFromDb = ttrdbReader.getTtrFromDb();
+        Integer ttrFromDb = ttrHistoryDBService.getTtrFromDb();
 
-        return ttrPoints != ttrFromDb ? "Different" : "thesame";
+        return ttrPoints.intValue() != ttrFromDb.intValue() ? "Different" : "thesame";
     }
 
 }
