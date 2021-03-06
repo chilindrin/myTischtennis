@@ -1,5 +1,6 @@
 package org.chilin;
 
+import org.chilin.common.vo.TTRHistoryVO;
 import org.chilin.db.TTRHistoryKeeper;
 import org.chilin.mytt.service.TTRService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +18,11 @@ public class TTRPointsInvestigator {
 
     @RequestMapping("/notifymeifdifferent")
     public String notifyTTRDifference(){
-        Integer ttrPoints = myTischtennisService.getTtrPoints();
+        TTRHistoryVO ttrFromMyTT = myTischtennisService.getTtrPoints();
 
-        Integer ttrFromDb = ttrHistoryDBService.getTtrFromDb();
+        TTRHistoryVO ttrFromDb = ttrHistoryDBService.getTtrFromDb();
 
-        return ttrPoints.intValue() != ttrFromDb.intValue() ? "Different" : "thesame";
+        return ttrFromDb.equals(ttrFromMyTT) ? "thesame" : "Different";
     }
 
 }

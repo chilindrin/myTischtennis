@@ -1,5 +1,6 @@
 package org.chilin.mytt.service;
 
+import org.chilin.common.vo.TTRHistoryVO;
 import org.chilin.mytt.model.MyTischTennisSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,7 +33,7 @@ public class TTRService {
     private WebClient myTischtennisClient;
     private String baseUrl = "https://www.mytischtennis.de";
 
-    public Integer getTtrPoints(){
+    public TTRHistoryVO getTtrPoints(){
         myTischtennisClient = createMyTischtennisClient();
 
         logInAndGetCookies();
@@ -45,7 +46,7 @@ public class TTRService {
             logOutFromMyTischtennis();
         }
 
-        return this.myTischTennisSession.getTtrEntry().getTtr();
+        return this.myTischTennisSession.getTtrEntry();
     }
 
     private void logOutFromMyTischtennis(){
