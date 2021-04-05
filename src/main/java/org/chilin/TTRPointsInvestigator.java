@@ -16,13 +16,19 @@ public class TTRPointsInvestigator {
     @Autowired
     private TTRHistoryKeeper ttrHistoryDBService;
 
+
+
     @RequestMapping("/notifymeifdifferent")
     public String notifyTTRDifference(){
         TTRHistoryVO ttrFromMyTT = myTischtennisService.getTtrPoints();
 
         TTRHistoryVO ttrFromDb = ttrHistoryDBService.getTtrFromDb();
 
-        return ttrFromDb.equals(ttrFromMyTT) ? "thesame" : "Different";
+        return ttrFromDb.equals(ttrFromMyTT) ? "thesame" : notifyAndresitoLindo(ttrFromMyTT);
+    }
+
+    private String notifyAndresitoLindo(TTRHistoryVO ttrFromMyTT) {
+        return "";
     }
 
 }
